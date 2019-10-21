@@ -1,6 +1,7 @@
  {
   "author": "Yuriy Musin",
   "name": "fcc-learn-npm-package-json",
+  "description": "Curriculum Design for the APIs-and-Microservices Course",
   "dependencies": {
     "express": "^4.14.0"
   },
