@@ -31,10 +31,8 @@ app.get("/api/timestamp/", (req, res) => {
   res.json({ unix: Date.now(), utc: Date() });
 });
 
-app.get("/api/timestamp/:date_string?", function (req, res) {
-  const Today = new Date();
-  //time = new Date().toString();
-  //res.json({date: 'date_string = '+req.params.date_string});
+app.get("/api/timestamp/:date_string", function (req, res) {
+  /*const Today = new Date();
   const userDate = new Date(req.params.date_string);
   if(Today.getTime() === userDate.getTime()) {
     res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
@@ -43,7 +41,7 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
     res.json({"error" : "Invalid Date" });
     return;
   }
-  /*
+  
   //it ok
   if (req.params.date_string === undefined) {
     //const currentDate = new Date().toString();
@@ -51,20 +49,17 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
     return;
   }*/
   if (/\d{5,}/.test(req.params.date_string)) {
-    //dateInt = ;
     //Date regards numbers as unix timestamps, strings are processed differently
     res.json({ unix: req.params.date_string, utc: new Date(parseInt(req.params.date_string)).toUTCString() });
   }
   
-  let dateObject = new Date(req.params.date_string);
-  if (dateObject.toString() === "Invalid Date") {
-    res.json({ error: "Invaid Date" });
+  const date = new Date(req.params.date_string);
+  if (date.toString() === "Invalid Date") {
+    res.json({ error: "Invalid Date" });
   } else {
-    res.json({ unix: dateObject.valueOf(), utc: dateObject.toUTCString() });
+    res.json({ unix: date.valueOf(), utc: date.toUTCString() });
   }
-  //{date: 'date = '+req.params.date_string}
 
-  //res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
 });
 
 // listen for requests :)
