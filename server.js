@@ -43,12 +43,13 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
     res.json({"error" : "Invalid Date" });
     return;
   }
+  /*
   //it ok
   if (req.params.date_string === undefined) {
     //const currentDate = new Date().toString();
     res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
     return;
-  }
+  }*/
   
   let dateObject = new Date(req.params.date_string);
   if (dateObject.toString() === "Invalid Date") {
