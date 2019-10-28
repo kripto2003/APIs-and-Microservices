@@ -18,18 +18,20 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/api/timestamp/:date_string?", function (req, res) {
+  const Today = new Date();
+  
+  if (Date.parse(req.params.date_string) == NaN) {
+    res.json({"error" : "Invalid Date" });
+    return;
+  }
+  if (req.params.date_string === undefined) {
+    //const currentDate = new Date().toString();
+    res.json({"unix req.params.date_string === undefined": Today.getTime(), "utc" : Today.toUTCString() });
+    return;
+  }
 
-// your first API endpoint... 
-/*app.get("/api/hello", function (req, res) {
-  res.json({greeting: 'hello API'});
-});
-
-app.get("/api/timestamp/2015-12-25", function (req, res) {
-  res.json({greeting: 'hello API'});
-});*/
-
-app.get("/api/timestamp/:date_string", function (req, res) {
-  res.json({date: req.params.date_string});
+  res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
 });
 
 // listen for requests :)
