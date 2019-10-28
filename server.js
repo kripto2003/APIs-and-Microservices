@@ -27,7 +27,7 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
   }
   if (req.params.date_string === undefined) {
     //const currentDate = new Date().toString();
-    res.json({"unix req.params.date_string === undefined": Today.getTime(), "utc" : Today.toUTCString() });
+    res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
     return;
   }
 
