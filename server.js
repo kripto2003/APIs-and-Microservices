@@ -18,6 +18,10 @@ app.get("/", function (req, res) {
   res.sendFile(__dirname + '/views/index.html');
 });
 
+app.get("/api/timestamp/", (req, res) => {
+  res.json({ unix: Date.now(), utc: Date() });
+});
+
 app.get("/api/timestamp/:date_string?", function (req, res) {
   const Today = new Date();
   //time = new Date().toString();
