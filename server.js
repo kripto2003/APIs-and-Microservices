@@ -50,6 +50,11 @@ app.get("/api/timestamp/:date_string?", function (req, res) {
     res.json({"unix": Today.getTime(), "utc" : Today.toUTCString() });
     return;
   }*/
+  if (/\d{5,}/.test(req.params.date_string)) {
+    //dateInt = ;
+    //Date regards numbers as unix timestamps, strings are processed differently
+    res.json({ unix: req.params.date_string, utc: new Date(parseInt(req.params.date_string)).toUTCString() });
+  }
   
   let dateObject = new Date(req.params.date_string);
   if (dateObject.toString() === "Invalid Date") {
