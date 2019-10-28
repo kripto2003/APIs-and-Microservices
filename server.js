@@ -20,13 +20,13 @@ app.get("/", function (req, res) {
 
 
 // your first API endpoint... 
-app.get("/api/hello", function (req, res) {
+/*app.get("/api/hello", function (req, res) {
   res.json({greeting: 'hello API'});
 });
 
 app.get("/api/timestamp/2015-12-25", function (req, res) {
   res.json({greeting: 'hello API'});
-});
+});*/
 
 app.get("/api/timestamp/:date_string", function (req, res) {
   res.json({date: req.params.date_string});
